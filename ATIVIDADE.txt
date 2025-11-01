@@ -1,0 +1,60 @@
+// Classe Pessoa
+public class Pessoa {
+    private int id;
+    private String nome;
+    private int idade;
+
+    public Pessoa(int id, String nome, int idade) {
+        this.id = id;
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", idade=" + idade +
+                '}';
+    }
+}
+// Classe PessoaFactory
+public class PessoaFactory {
+    private int contadorId = 0;
+
+    public Pessoa criarPessoa(String nome, int idade) {
+        Pessoa pessoa = new Pessoa(contadorId, nome, idade);
+        contadorId++; // incrementa o ID para a próxima pessoa
+        return pessoa;
+    }
+}
+// Classe principal para testar
+public class Main {
+    public static void main(String[] args) {
+        PessoaFactory fabrica = new PessoaFactory();
+
+        Pessoa pessoa1 = fabrica.criarPessoa("Ana", 22);
+        Pessoa pessoa2 = fabrica.criarPessoa("Bruno", 33);
+        Pessoa pessoa3 = fabrica.criarPessoa("Carla", 44);
+
+        System.out.println(pessoa1); // id = 0
+        System.out.println(pessoa2); // id = 1
+        System.out.println(pessoa3); // id = 2
+    }
+}
+Pessoa{id=0, nome='Ana', idade=22}
+Pessoa{id=1, nome='Bruno', idade=33}
+Pessoa{id=2, nome='Carla', idade=44}
